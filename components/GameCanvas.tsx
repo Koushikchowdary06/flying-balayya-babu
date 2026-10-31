@@ -133,37 +133,16 @@ export default function GameCanvas() {
 
       {/* TOP HUD (Score & Controls) */}
       <div className="absolute top-4 left-0 right-0 pointer-events-none mx-auto flex max-w-4xl items-center justify-between px-6">
-        {/* Active Chaos Banner */}
-        <div className="min-w-[140px]">
-          {activeChaos && (
-            <div
-              className="flex items-center gap-2 rounded-2xl border px-3 py-1.5 shadow-lg backdrop-blur-md transition-all animate-bounce"
-              style={{
-                borderColor: activeChaos.color,
-                backgroundColor: 'rgba(0,0,0,0.7)',
-                color: activeChaos.color,
-              }}
-            >
-              <span className="text-xl">{activeChaos.icon}</span>
-              <div>
-                <p className="text-xs font-black tracking-wider uppercase">{activeChaos.name}</p>
-                <div className="h-1 w-24 overflow-hidden rounded-full bg-white/20 mt-1">
-                  <div
-                    className="h-full transition-all duration-100"
-                    style={{
-                      width: `${Math.max(0, (activeChaos.remainingMs / activeChaos.durationMs) * 100)}%`,
-                      backgroundColor: activeChaos.color,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
+        {/* Personal Best Pill */}
+        <div className="flex items-center gap-2 rounded-2xl border border-amber-500/30 bg-black/70 px-4 py-2 backdrop-blur-md shadow-lg">
+          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
+            BEST: <span className="font-mono text-base font-black text-white">{profile.bestScore}</span>
+          </span>
         </div>
 
         {/* Big Neon Score */}
-        <div className="text-center drop-shadow-[0_0_20px_rgba(245,158,11,0.6)]">
-          <span className="font-black text-6xl text-white font-mono tracking-tighter">
+        <div className="text-center drop-shadow-[0_0_25px_rgba(245,158,11,0.7)]">
+          <span className="font-black text-6xl text-amber-400 font-mono tracking-tighter sm:text-7xl">
             {score}
           </span>
         </div>

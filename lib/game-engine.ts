@@ -163,25 +163,22 @@ export class GameEngine {
       return;
     }
 
-    const isReversed = this.activeChaosEvent?.type === 'REVERSE_GRAVITY';
     const jumpMagnitude = this.physics.jumpForce;
-
-    // In reverse gravity, tapping jumps downward!
-    this.birdVy = isReversed ? -jumpMagnitude : jumpMagnitude;
-    this.birdRotation = isReversed ? 0.4 : -0.45; // Tilt up or down
+    this.birdVy = jumpMagnitude;
+    this.birdRotation = -0.42;
 
     // Emit jump ring particles
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       this.particles.push({
-        x: this.birdX,
-        y: this.birdY + (isReversed ? -10 : 15),
+        x: this.birdX - 8,
+        y: this.birdY + 14,
         vx: (Math.random() - 0.5) * 3 - 2,
-        vy: (Math.random() - 0.5) * 2 + (isReversed ? -1 : 1),
+        vy: (Math.random() - 0.5) * 2 + 1,
         size: Math.random() * 4 + 2,
-        color: this.characterConfig.auraColor || '#f59e0b',
+        color: this.characterConfig.auraColor || '#fbbf24',
         alpha: 0.9,
         life: 0,
-        maxLife: 20,
+        maxLife: 18,
       });
     }
 
@@ -323,60 +320,19 @@ export class GameEngine {
     const height = this.getCanvasHeight();
     const effectiveGround = height - this.groundHeight;
 
-    // Chaos Event Timing
-    if (this.activeChaosEvent) {
-      this.activeChaosEvent.remainingMs -= delta;
-      if (this.activeChaosEvent.remainingMs <= 0) {
-        this.endChaosEvent();
-      }
-    } else {
-      this.chaosCooldown--;
-      if (this.chaosCooldown <= 0) {
-        this.triggerRandomChaos();
-        this.chaosCooldown = Math.floor(Math.random() * 320) + 380;
-      }
-    }
-
-    // Determine physics modifiers based on chaos
-    let currentGravity = this.physics.gravity;
-    let currentPipeSpeed = this.physics.pipeSpeed;
-    const chaosType = this.activeChaosEvent?.type;
-
-    if (chaosType === 'LOW_GRAVITY') {
-      currentGravity *= 0.45;
-    } else if (chaosType === 'REVERSE_GRAVITY') {
-      currentGravity = -this.physics.gravity * 0.85;
-    } else if (chaosType === 'SUPER_SPEED') {
-      currentPipeSpeed *= 1.85;
-    } else if (chaosType === 'SLOW_MOTION') {
-      currentGravity *= 0.55;
-      currentPipeSpeed *= 0.5;
-    } else if (chaosType === 'GIANT_MODE') {
-      this.birdScale = 1.85;
-    } else if (chaosType === 'MINI_MODE') {
-      this.birdScale = 0.55;
-    } else if (chaosType === 'CHAOS_MODE') {
-      currentPipeSpeed *= 1.4;
-      this.screenShakeIntensity = Math.max(this.screenShakeIntensity, 3);
-    }
+    // Smooth, consistent physics
+    const currentGravity = this.physics.gravity;
+    const currentPipeSpeed = this.physics.pipeSpeed;
 
     // Bird Velocity & Position
     this.birdVy += currentGravity;
     this.birdY += this.birdVy;
 
     // Bird Rotation
-    if (chaosType === 'REVERSE_GRAVITY') {
-      if (this.birdVy < 0) {
-        this.birdRotation = Math.max(-0.6, this.birdRotation - 0.05);
-      } else {
-        this.birdRotation = Math.min(0.7, this.birdRotation + 0.04);
-      }
+    if (this.birdVy < 0) {
+      this.birdRotation = Math.max(-0.45, this.birdRotation - 0.06);
     } else {
-      if (this.birdVy < 0) {
-        this.birdRotation = Math.max(-0.45, this.birdRotation - 0.06);
-      } else {
-        this.birdRotation = Math.min(1.2, this.birdRotation + 0.04);
-      }
+      this.birdRotation = Math.min(1.1, this.birdRotation + 0.035);
     }
 
     // Ground and Ceiling collision
@@ -388,10 +344,7 @@ export class GameEngine {
     }
     if (this.birdY - birdRadius <= 0) {
       this.birdY = birdRadius;
-      if (chaosType === 'REVERSE_GRAVITY') {
-        this.die('hit_ceiling');
-        return;
-      }
+      this.birdVy = 0; // Soft bounce at ceiling rather than death
     }
 
     // Background scrolling
@@ -552,18 +505,11 @@ export class GameEngine {
   }
 
   private drawBackground(ctx: CanvasRenderingContext2D, width: number, height: number) {
-    const isDark = this.activeChaosEvent?.type === 'DARK_MODE';
-
     // Sky Gradient
     const skyGrad = ctx.createLinearGradient(0, 0, 0, height);
-    if (isDark) {
-      skyGrad.addColorStop(0, '#020617');
-      skyGrad.addColorStop(1, '#090d16');
-    } else {
-      skyGrad.addColorStop(0, '#0f172a');
-      skyGrad.addColorStop(0.5, '#1e1b4b');
-      skyGrad.addColorStop(1, '#2e1065');
-    }
+    skyGrad.addColorStop(0, '#0f172a');
+    skyGrad.addColorStop(0.5, '#1e1b4b');
+    skyGrad.addColorStop(1, '#2e1065');
     ctx.fillStyle = skyGrad;
     ctx.fillRect(0, 0, width, height);
 
@@ -576,7 +522,7 @@ export class GameEngine {
     }
 
     // Neon Skyline Silhouettes (Parallax)
-    ctx.fillStyle = isDark ? '#050811' : '#140c2b';
+    ctx.fillStyle = '#140c2b';
     const buildingWidth = 60;
     const offset = this.backgroundX;
     for (let x = -buildingWidth; x < width + buildingWidth; x += buildingWidth) {
@@ -585,7 +531,7 @@ export class GameEngine {
     }
 
     // Moving Clouds
-    ctx.fillStyle = isDark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(255, 255, 255, 0.08)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
     const cloudOffset = (this.frameCount * 0.5) % (width + 200);
     ctx.beginPath();
     ctx.arc(width - cloudOffset + 100, 80, 45, 0, Math.PI * 2);
@@ -595,13 +541,8 @@ export class GameEngine {
   }
 
   private drawPipes(ctx: CanvasRenderingContext2D) {
-    const isGhost = this.activeChaosEvent?.type === 'INVISIBLE_OBSTACLES';
-
     this.pipes.forEach((p) => {
       ctx.save();
-      if (isGhost) {
-        ctx.globalAlpha = 0.25;
-      }
 
       // Neon Gradient for Pipes
       const pipeGrad = ctx.createLinearGradient(p.x, 0, p.x + p.width, 0);
@@ -838,10 +779,7 @@ export class GameEngine {
     // 5. Character
     this.drawCharacter(this.ctx);
 
-    // 6. Dark Mode Spotlight overlay
-    this.drawDarkSpotlight(this.ctx, width, height);
-
-    // 7. Floating Texts
+    // 6. Floating Texts
     this.drawFloatingTexts(this.ctx);
 
     this.ctx.restore();

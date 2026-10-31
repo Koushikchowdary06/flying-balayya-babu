@@ -19,7 +19,6 @@ import {
 import { LeaderboardEntry, PlayerProfile } from '@/lib/types';
 import { fetchLeaderboard } from '@/lib/leaderboard';
 import { getStoredProfile, getUnlockedAchievements } from '@/lib/storage';
-import { CHAOS_EVENT_DEFINITIONS } from '@/lib/constants';
 
 export default function HomePage() {
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
@@ -37,8 +36,6 @@ export default function HomePage() {
       setTotalPlayers(Math.max(1420, entries.length * 150));
     });
   }, []);
-
-  const chaosList = Object.entries(CHAOS_EVENT_DEFINITIONS);
 
   return (
     <div className="relative overflow-hidden bg-zinc-950 pb-20">
@@ -215,33 +212,39 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* 10 CRAZY CHAOS MUTATIONS SHOWCASE */}
+        {/* MASS ARCADE FEATURES SHOWCASE */}
         <div className="mt-20">
           <div className="text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-3.5 py-1 text-xs font-black tracking-widest text-rose-400">
+            <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1 text-xs font-black tracking-widest text-amber-400">
               <Zap className="h-3.5 w-3.5" />
-              UNPREDICTABLE GAMEPLAY
+              PURE ARCADE ENTERTAINMENT
             </div>
             <h2 className="mt-2 text-2xl font-black uppercase tracking-wider text-white sm:text-3xl">
-              10 RANDOM CHAOS EVENTS
+              MASS ARCADE HIGHLIGHTS
             </h2>
             <p className="mt-1 text-xs text-zinc-400">
-              Every flight is mutated live by the arcade chaos engine!
+              Smooth 60 FPS physics, pure skill-based flying, and zero frustrating distractions!
             </p>
           </div>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-5">
-            {chaosList.map(([key, def]) => (
+            {[
+              { icon: '🦁', name: 'Balayya Flight', desc: 'Crisp upward tilt and smooth 60 FPS responsive controls' },
+              { icon: '🎵', name: 'Telugu Anthems', desc: 'Looping energetic soundtrack while flying' },
+              { icon: '🔥', name: 'Near-Miss Combos', desc: 'Skim close to pipes for +2 bonus score' },
+              { icon: '✨', name: 'Custom Auras', desc: 'Fire, Lightning, Rainbow and Gold particle trails' },
+              { icon: '👑', name: 'Global Ranks', desc: 'All-Time, Weekly, and Daily Hall of Fame' },
+            ].map((feat) => (
               <div
-                key={key}
-                className="flex flex-col items-center rounded-2xl border border-white/5 bg-zinc-900/50 p-4 text-center transition hover:border-white/20 hover:bg-zinc-900"
+                key={feat.name}
+                className="flex flex-col items-center rounded-2xl border border-white/5 bg-zinc-900/50 p-4 text-center transition hover:border-amber-400/30 hover:bg-zinc-900"
               >
-                <span className="text-3xl">{def.icon}</span>
+                <span className="text-3xl">{feat.icon}</span>
                 <h4 className="mt-2 text-xs font-black tracking-wider uppercase text-white">
-                  {def.name}
+                  {feat.name}
                 </h4>
                 <p className="mt-1 text-[11px] text-zinc-400 leading-tight">
-                  {def.description}
+                  {feat.desc}
                 </p>
               </div>
             ))}
@@ -249,12 +252,12 @@ export default function HomePage() {
         </div>
 
         {/* BOTTOM CALL TO ACTION */}
-        <div className="mt-20 rounded-3xl border border-amber-500/30 bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-purple-500/15 p-8 text-center sm:p-12">
+        <div className="mt-20 rounded-3xl border border-amber-500/30 bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-yellow-500/15 p-8 text-center sm:p-12">
           <h2 className="text-3xl font-black uppercase text-white sm:text-4xl">
-            READY TO SURVIVE THE CHAOS?
+            READY TO FLY WITH BALAYYA BABU?
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-zinc-300">
-            One tap is all it takes. Prove your arcade reflexes and claim your spot on the hall of fame.
+            One tap is all it takes. Fly with lion heart and claim your spot on the hall of fame.
           </p>
           <NextLink
             href="/play"

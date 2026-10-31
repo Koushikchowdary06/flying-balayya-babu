@@ -120,7 +120,7 @@ export default function ScoreCard({ result, profile, onPlayAgain }: ScoreCardPro
 
         {/* Extra Run Stats */}
         <div className="mt-3 flex items-center justify-between px-2 text-xs text-zinc-400">
-          <span>Chaos Events Survived: <strong className="text-zinc-200">{result.chaosEventsSurvived}</strong></span>
+          <span>Flight Rating: <strong className="text-amber-400 font-bold">JAI BALAYYA 🦁</strong></span>
           <span>Near Misses: <strong className="text-amber-400">{result.nearMisses}</strong></span>
         </div>
 
