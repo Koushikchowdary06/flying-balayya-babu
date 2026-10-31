@@ -102,7 +102,7 @@ export function getStoredProfile(): PlayerProfile {
   }
   const defaultGuest: PlayerProfile = {
     id: 'guest_' + Math.random().toString(36).substring(2, 8),
-    username: 'Chaos_Pilot_' + Math.floor(100 + Math.random() * 900),
+    username: 'Balayya_Fan_' + Math.floor(100 + Math.random() * 900),
     avatarUrl: '/assets/default-character.png',
     bestScore: 0,
     totalGames: 0,

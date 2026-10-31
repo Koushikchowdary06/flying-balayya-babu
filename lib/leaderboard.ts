@@ -6,7 +6,7 @@ const INITIAL_MOCK_LEADERBOARD: LeaderboardEntry[] = [
   {
     rank: 1,
     playerId: 'hero_balayya',
-    username: 'Balayya_Supreme 👑',
+    username: 'Balayya Babu (God of Masses) 👑',
     avatarUrl: '/assets/default-character.png',
     bestScore: 248,
     totalGames: 420,

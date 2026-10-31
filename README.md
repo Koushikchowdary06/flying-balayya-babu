@@ -1,8 +1,8 @@
-# 🌪️ FLAPPY CHAOS – ULTIMATE CUSTOM ARCADE GAMING WEB APP
+# 🦁 FLYING BALAYYA BABU – ULTIMATE ARCADE GAMING WEB APP
 
-> **“ONE TAP. INFINITE CHAOS.”**
+> **“JAI BALAYYA! ONE TAP. INFINITE CHAOS.”**
 
-Flappy Chaos is a next-generation, high-performance arcade web gaming platform built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **HTML5 Canvas** (60 FPS physics engine), backed by **Supabase PostgreSQL & Authentication**, and preloaded with the custom hero avatar (Nandamuri Balakrishna) and background soundtrack.
+**FLYING BALAYYA BABU** is a next-generation, high-performance arcade web gaming platform built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **HTML5 Canvas** (60 FPS physics engine), backed by **Supabase PostgreSQL & Authentication**, and preloaded with the legendary Nandamuri Balakrishna (God of Masses) flyer avatar and Telugu soundtrack!
 
 ---
 

@@ -196,13 +196,18 @@ export default function GameCanvas() {
 
       {/* START PROMPT */}
       {!hasStarted && !gameResult && (
-        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/30 backdrop-blur-[2px]">
-          <div className="flex flex-col items-center rounded-3xl border border-amber-500/40 bg-zinc-950/80 p-6 shadow-2xl text-center">
-            <span className="text-4xl animate-bounce">👆</span>
-            <h2 className="mt-2 text-xl font-black tracking-wider text-amber-400">
+        <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/40 backdrop-blur-[2px]">
+          <div className="flex flex-col items-center rounded-3xl border border-amber-400/60 bg-zinc-950/90 p-7 shadow-2xl text-center">
+            <span className="text-4xl animate-bounce">🦁</span>
+            <h2 className="mt-2 text-2xl font-black tracking-wider text-amber-400">
               TAP OR PRESS SPACE
             </h2>
-            <p className="mt-1 text-xs text-zinc-400">To fly, dodge pipes, and survive the chaos!</p>
+            <p className="mt-1 text-sm font-bold text-yellow-300">
+              FLY BALAYYA BABU!
+            </p>
+            <p className="mt-1 text-xs text-zinc-400">
+              Dodge pipes, survive chaos mutations, and claim #1!
+            </p>
           </div>
         </div>
       )}

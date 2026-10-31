@@ -52,22 +52,22 @@ export default function HomePage() {
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-zinc-900/80 px-4 py-2 shadow-lg shadow-amber-500/10 backdrop-blur-xl">
             <Flame className="h-4 w-4 text-amber-400 animate-pulse" />
             <span className="text-xs font-black tracking-widest text-amber-400 uppercase">
-              NEXT-GEN ARCADE SENSATION
+              JAI BALAYYA! ARCADE EDITION
             </span>
           </div>
 
           {/* Main Title */}
-          <h1 className="mt-6 font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-rose-500 to-fuchsia-500 text-6xl sm:text-7xl lg:text-8xl drop-shadow-[0_0_35px_rgba(244,63,94,0.35)]">
-            FLAPPY CHAOS
+          <h1 className="mt-6 font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-rose-500 text-5xl sm:text-7xl lg:text-8xl drop-shadow-[0_0_35px_rgba(245,158,11,0.4)]">
+            FLYING BALAYYA BABU
           </h1>
 
           {/* Tagline */}
-          <p className="mt-3 text-lg sm:text-2xl font-black tracking-widest text-zinc-300">
+          <p className="mt-3 text-lg sm:text-2xl font-black tracking-widest text-zinc-200">
             “ONE TAP. INFINITE CHAOS.”
           </p>
 
           <p className="mt-4 max-w-2xl text-sm sm:text-base text-zinc-400 leading-relaxed">
-            The unpredictable arcade flyer! Dodge deadly obstacles, survive 10 insane chaos mutations, customize your personal flying hero, jam to Telugu anthems, and conquer the global leaderboards.
+            The ultimate mass arcade sensation! Fly as Nandamuri Balakrishna (God of Masses), dodge unpredictable neon obstacles, survive 10 wild chaos mutations, groove to Telugu beats, and dominate the world leaderboard!
           </p>
 
           {/* Character Spotlight Preview */}

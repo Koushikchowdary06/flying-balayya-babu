@@ -47,8 +47,8 @@ export class GameEngine {
   public birdY: number = 250;
   public birdVy: number = 0;
   public birdRotation: number = 0;
-  public birdWidth: number = 48;
-  public birdHeight: number = 48;
+  public birdWidth: number = 56;
+  public birdHeight: number = 56;
   public birdScale: number = 1.0;
   private birdImage: HTMLImageElement | null = null;
   private birdImageLoaded: boolean = false;
@@ -380,7 +380,7 @@ export class GameEngine {
     }
 
     // Ground and Ceiling collision
-    const birdRadius = (this.birdWidth / 2) * this.birdScale * 0.85;
+    const birdRadius = (this.birdWidth / 2) * this.birdScale * 0.72;
     if (this.birdY + birdRadius >= effectiveGround) {
       this.birdY = effectiveGround - birdRadius;
       this.die('hit_ground');
@@ -681,27 +681,48 @@ export class GameEngine {
     const half = size / 2;
 
     // Glowing Neon Aura
-    ctx.shadowColor = this.characterConfig.auraColor || '#f59e0b';
-    ctx.shadowBlur = this.characterConfig.glowIntensity || 16;
+    ctx.shadowColor = this.characterConfig.auraColor || '#fbbf24';
+    ctx.shadowBlur = this.characterConfig.glowIntensity || 20;
 
     if (this.birdImage && this.birdImageLoaded) {
+      const imgW = this.birdImage.naturalWidth || this.birdImage.width;
+      const imgH = this.birdImage.naturalHeight || this.birdImage.height;
+      const sSize = Math.min(imgW, imgH);
+      let sx = (imgW - sSize) / 2;
+      let sy = 0;
+
+      // Smart crop: portrait photos keep face centered from top
+      if (imgH > imgW * 1.1) {
+        sy = Math.max(0, Math.min(imgH - sSize, imgH * 0.05));
+      } else if (imgH < imgW) {
+        sx = (imgW - sSize) / 2;
+        sy = (imgH - sSize) / 2;
+      }
+
       if (this.characterConfig.shape === 'raw') {
         // Direct image rendering
-        ctx.drawImage(this.birdImage, -half, -half, size, size);
+        ctx.drawImage(this.birdImage, sx, sy, sSize, sSize, -half, -half, size, size);
       } else {
-        // Circular arcade badge with neon border
+        // High-contrast Circular Arcade Badge for Balayya
         ctx.beginPath();
         ctx.arc(0, 0, half, 0, Math.PI * 2);
         ctx.closePath();
         ctx.save();
         ctx.clip();
 
-        // Draw image centered & fitted
-        ctx.drawImage(this.birdImage, -half, -half, size, size);
+        // Draw image perfectly centered on face & aspect ratio preserved
+        ctx.drawImage(this.birdImage, sx, sy, sSize, sSize, -half, -half, size, size);
         ctx.restore();
 
-        // Neon border ring
-        ctx.strokeStyle = this.characterConfig.auraColor || '#f59e0b';
+        // Outer contrast outline
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(0, 0, half, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Glowing Neon Gold Ring
+        ctx.strokeStyle = this.characterConfig.auraColor || '#fbbf24';
         ctx.lineWidth = 3;
         ctx.beginPath();
         ctx.arc(0, 0, half, 0, Math.PI * 2);

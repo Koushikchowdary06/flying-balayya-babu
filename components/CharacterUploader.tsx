@@ -80,7 +80,7 @@ export default function CharacterUploader() {
           className="inline-flex items-center gap-1.5 self-start rounded-xl border border-white/10 bg-zinc-900 px-3.5 py-2 text-xs font-semibold text-zinc-400 transition hover:bg-zinc-800 hover:text-white"
         >
           <RotateCcw className="h-3.5 w-3.5" />
-          Reset to Hero
+          Reset to Balayya Babu
         </button>
       </div>
 
@@ -118,7 +118,7 @@ export default function CharacterUploader() {
           <div className="mt-4 flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-semibold text-zinc-300">
-              {config.isCustom ? 'Custom Upload Active' : 'Default Balayya Avatar'}
+              {config.isCustom ? 'Custom Upload Active' : 'Default Balayya Babu Avatar'}
             </span>
           </div>
 

@@ -52,9 +52,9 @@ export default function ScoreCard({ result, profile, onPlayAgain }: ScoreCardPro
       <div className="relative w-full max-w-md rounded-3xl border border-amber-500/40 bg-zinc-950/95 p-6 shadow-2xl shadow-rose-950/60 backdrop-blur-2xl">
         {/* Glow Header */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-xs font-black tracking-widest text-rose-400">
-            <Flame className="h-4 w-4" />
-            GAME OVER
+          <div className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3.5 py-1 text-xs font-black tracking-widest text-amber-400">
+            <Flame className="h-4 w-4 text-rose-500" />
+            JAI BALAYYA! FLIGHT CONCLUDED
           </div>
 
           <h2 className="mt-3 text-2xl font-black uppercase tracking-wider text-white">

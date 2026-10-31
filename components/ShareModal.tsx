@@ -47,16 +47,16 @@ export default function ShareModal({ isOpen, onClose, result, profile }: ShareMo
 
     // Brand Title
     ctx.textAlign = 'center';
-    ctx.font = '900 48px system-ui, sans-serif';
+    ctx.font = '900 44px system-ui, sans-serif';
     ctx.fillStyle = '#f59e0b';
     ctx.shadowColor = '#f59e0b';
     ctx.shadowBlur = 15;
-    ctx.fillText('FLAPPY CHAOS', 400, 100);
+    ctx.fillText('FLYING BALAYYA BABU', 400, 100);
 
     ctx.font = '700 18px system-ui, sans-serif';
     ctx.fillStyle = '#94a3b8';
     ctx.shadowBlur = 0;
-    ctx.fillText('“ONE TAP. INFINITE CHAOS.”', 400, 135);
+    ctx.fillText('“JAI BALAYYA! ONE TAP. INFINITE CHAOS.”', 400, 135);
 
     // Character Avatar
     const img = new Image();
@@ -131,7 +131,7 @@ export default function ShareModal({ isOpen, onClose, result, profile }: ShareMo
       // Footer
       ctx.font = '700 16px system-ui, sans-serif';
       ctx.fillStyle = '#64748b';
-      ctx.fillText('PLAY FREE AT: FLAPPY CHAOS ARCADE', 400, 930);
+      ctx.fillText('PLAY FREE AT: FLYING BALAYYA BABU ARCADE', 400, 930);
 
       try {
         setPreviewUrl(canvas.toDataURL('image/png'));
@@ -148,13 +148,13 @@ export default function ShareModal({ isOpen, onClose, result, profile }: ShareMo
     if (!canvas) return;
     const a = document.createElement('a');
     a.href = canvas.toDataURL('image/png');
-    a.download = `flappy-chaos-score-${result.score}.png`;
+    a.download = `flying-balayya-score-${result.score}.png`;
     a.click();
   };
 
   const handleCopyLink = () => {
     const url = window.location.origin;
-    navigator.clipboard.writeText(`I just scored ${result.score} in FLAPPY CHAOS! Can you beat my score? Play at: ${url}`);
+    navigator.clipboard.writeText(`I just scored ${result.score} in FLYING BALAYYA BABU! Can you beat my score? Play at: ${url}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -165,17 +165,17 @@ export default function ShareModal({ isOpen, onClose, result, profile }: ShareMo
       try {
         canvas.toBlob(async (blob) => {
           if (!blob) return;
-          const file = new File([blob], 'flappy-chaos-score.png', { type: 'image/png' });
+          const file = new File([blob], 'flying-balayya-score.png', { type: 'image/png' });
           if (navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
-              title: 'FLAPPY CHAOS Scorecard',
-              text: `I just scored ${result.score} on FLAPPY CHAOS! 🔥`,
+              title: 'FLYING BALAYYA BABU Scorecard',
+              text: `I just scored ${result.score} on FLYING BALAYYA BABU! Jai Balayya! 🔥`,
               files: [file],
             });
           } else {
             await navigator.share({
-              title: 'FLAPPY CHAOS Scorecard',
-              text: `I just scored ${result.score} on FLAPPY CHAOS! Check it out!`,
+              title: 'FLYING BALAYYA BABU Scorecard',
+              text: `I just scored ${result.score} on FLYING BALAYYA BABU! Check it out!`,
               url: window.location.origin,
             });
           }
@@ -189,7 +189,7 @@ export default function ShareModal({ isOpen, onClose, result, profile }: ShareMo
   };
 
   const shareText = encodeURIComponent(
-    `🔥 I just scored ${result.score} in FLAPPY CHAOS! Beat my record if you can: ${typeof window !== 'undefined' ? window.location.origin : ''}`
+    `🔥 I just scored ${result.score} in FLYING BALAYYA BABU! Jai Balayya! Beat my record: ${typeof window !== 'undefined' ? window.location.origin : ''}`
   );
 
   return (

@@ -90,7 +90,7 @@ export const DEFAULT_ACHIEVEMENTS: Achievement[] = [
   {
     id: 'first_flight',
     name: 'First Flight',
-    description: 'Complete your very first run in Flappy Chaos.',
+    description: 'Complete your very first run in Flying Balayya Babu.',
     icon: '🐣',
     category: 'games',
     threshold: 1,
@@ -129,8 +129,8 @@ export const DEFAULT_ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: 'unstoppable',
-    name: 'Unstoppable God',
-    description: 'Score 150 points. You are the ultimate Chaos Master.',
+    name: 'God of Masses',
+    description: 'Score 150 points. You are the ultimate Balayya Babu master!',
     icon: '⚡',
     category: 'score',
     threshold: 150,
@@ -145,8 +145,8 @@ export const DEFAULT_ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: 'addicted',
-    name: 'Chaos Addict',
-    description: 'Play 50 games of Flappy Chaos.',
+    name: 'Balayya Addict',
+    description: 'Play 50 games of Flying Balayya Babu.',
     icon: '🎮',
     category: 'games',
     threshold: 50,
@@ -169,7 +169,7 @@ export const DEATH_MESSAGES: Array<{ minScore: number; maxScore: number; message
       'Bro, did you even try? 😂',
       'The ground says hello!',
       'Gravity: 1, You: 0.',
-      'Did your screen freeze or just your thumbs?',
+      'Flap with Lion Heart! Jai Balayya! 🦁',
     ],
   },
   {
@@ -177,9 +177,9 @@ export const DEATH_MESSAGES: Array<{ minScore: number; maxScore: number; message
     maxScore: 9,
     messages: [
       'Getting warmed up! Tap with rhythm!',
-      'Just a scratch. Jump right back in!',
-      'The pipes are testing your patience!',
-      'Almost hit double digits!',
+      'Just a warm up! Don’t stop the mass roar! 🔥',
+      'Dookudu tho vacham! Jump right back in!',
+      'Almost hit double digits! Jai Balayya!',
     ],
   },
   {
@@ -188,7 +188,7 @@ export const DEATH_MESSAGES: Array<{ minScore: number; maxScore: number; message
     messages: [
       'Getting started! You’re getting the feel!',
       'Nice reflex work! Double digits unlocked!',
-      'Solid flight! Keep the composure!',
+      'Charitra srushtinchadam maaku alavate! Keep flying! 🦁',
     ],
   },
   {
@@ -196,8 +196,8 @@ export const DEATH_MESSAGES: Array<{ minScore: number; maxScore: number; message
     maxScore: 49,
     messages: [
       'Not bad! Real arcade reflexes kicking in!',
-      'You are dodging like a champion!',
-      'Respectable run! You are threatening the leaderboard!',
+      'Lion flight mode active! Dodging like a champion!',
+      'Mass rampage! You are threatening the leaderboard!',
     ],
   },
   {
@@ -205,17 +205,17 @@ export const DEATH_MESSAGES: Array<{ minScore: number; maxScore: number; message
     maxScore: 99,
     messages: [
       'You’re becoming dangerous! 🔥',
-      'Top tier reflexes! The chaos cannot stop you!',
-      'Phenomenal agility! Keep flying!',
+      'GOD OF MASSES SPEED! The chaos cannot stop Balayya!',
+      'Phenomenal agility! JAI BALAYYA!',
     ],
   },
   {
     minScore: 100,
     maxScore: 999999,
     messages: [
-      'ABSOLUTE LEGEND! 👑',
-      'GOD MODE ACTIVATED! Leaderboard royalty!',
-      'Unstoppable Chaos Conqueror!',
+      'ABSOLUTE LEGEND! GOD OF MASSES! 👑',
+      'UNSTOPPABLE BALAYYA POWER ACTIVATED!',
+      'Unstoppable Chaos Conqueror! Jai Balayya!',
     ],
   },
 ];

@@ -54,11 +54,11 @@ export default function Navbar() {
             </div>
           </div>
           <div>
-            <span className="bg-gradient-to-r from-amber-400 via-rose-500 to-fuchsia-500 bg-clip-text text-xl font-black tracking-wider text-transparent">
-              FLAPPY CHAOS
+            <span className="bg-gradient-to-r from-amber-400 via-rose-500 to-yellow-300 bg-clip-text text-xl font-black tracking-wider text-transparent">
+              FLYING BALAYYA BABU
             </span>
-            <span className="hidden text-[10px] font-bold tracking-widest text-zinc-400 sm:block">
-              ONE TAP. INFINITE CHAOS.
+            <span className="hidden text-[10px] font-black tracking-widest text-amber-400/90 sm:block">
+              JAI BALAYYA! ONE TAP. INFINITE CHAOS.
             </span>
           </div>
         </NextLink>

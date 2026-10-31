@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'FLAPPY CHAOS – One Tap. Infinite Chaos.',
+  title: 'FLYING BALAYYA BABU – Jai Balayya! One Tap. Infinite Chaos.',
   description:
-    'The ultimate customized, crazy, addictive, and competitive arcade gaming web application. Custom characters, unpredictable random events, audio studio, and global leaderboards.',
-  keywords: ['flappy bird', 'arcade', 'web game', 'flappy chaos', 'balayya flappy'],
-  authors: [{ name: 'Flappy Chaos Team' }],
+    'The ultimate arcade web game starring Nandamuri Balakrishna (God of Masses)! Dodge deadly pipes, survive 10 crazy chaos mutations, jam to Telugu anthems, and dominate the global leaderboards.',
+  keywords: ['flying balayya babu', 'balayya flappy', 'balakrishna game', 'arcade game', 'telugu web game', 'jai balayya'],
+  authors: [{ name: 'Flying Balayya Babu Team' }],
 };
 
 export const viewport: Viewport = {
