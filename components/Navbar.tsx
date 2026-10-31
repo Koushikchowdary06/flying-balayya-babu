@@ -1,32 +1,34 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import Link from 'next/navigation';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   Gamepad2,
   Trophy,
-  Palette,
   Volume2,
   VolumeX,
   User,
-  Settings as SettingsIcon,
   Flame,
+  Lock,
 } from 'lucide-react';
 import { audioManager } from '@/lib/audio-manager';
 import { getStoredProfile } from '@/lib/storage';
 import { PlayerProfile } from '@/lib/types';
 
+const SESSION_KEY = 'fb_admin_ok';
+
 export default function Navbar() {
   const pathname = usePathname();
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setProfile(getStoredProfile());
     const audioSettings = audioManager.getSettings();
     setIsMuted(audioSettings.isMuted);
+    setIsAdmin(sessionStorage.getItem(SESSION_KEY) === 'true');
   }, [pathname]);
 
   const toggleMute = () => {
@@ -35,13 +37,22 @@ export default function Navbar() {
     audioManager.updateSettings({ isMuted: nextState });
   };
 
-  const navLinks = [
+  // Public nav — Customize & Settings hidden (admin only)
+  const publicNavLinks = [
     { href: '/play', label: 'Play Now', icon: Gamepad2, highlight: true },
-    { href: '/customize', label: 'Customize', icon: Palette },
     { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
     { href: '/profile', label: 'Profile', icon: User },
-    { href: '/settings', label: 'Settings', icon: SettingsIcon },
   ];
+
+  const adminNavLinks = [
+    { href: '/play', label: 'Play Now', icon: Gamepad2, highlight: true },
+    { href: '/leaderboard', label: 'Leaderboard', icon: Trophy },
+    { href: '/profile', label: 'Profile', icon: User },
+    { href: '/customize', label: 'Customize', icon: Flame },
+    { href: '/settings', label: 'Settings', icon: Lock },
+  ];
+
+  const navLinks = isAdmin ? adminNavLinks : publicNavLinks;
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/60 backdrop-blur-xl">
@@ -97,6 +108,17 @@ export default function Navbar() {
               </NextLink>
             );
           })}
+
+          {/* Hidden admin shortcut — tiny lock icon only admin knows about */}
+          {!isAdmin && (
+            <NextLink
+              href="/customize"
+              title="Admin"
+              className="ml-1 flex h-8 w-8 items-center justify-center rounded-lg text-zinc-800 hover:text-zinc-600 transition"
+            >
+              <Lock className="h-3.5 w-3.5" />
+            </NextLink>
+          )}
         </nav>
 
         {/* Right side controls (Mute + Profile) */}

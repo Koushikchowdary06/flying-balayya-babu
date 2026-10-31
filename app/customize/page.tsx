@@ -3,12 +3,14 @@
 import React, { useState } from 'react';
 import CharacterUploader from '@/components/CharacterUploader';
 import AudioUploader from '@/components/AudioUploader';
+import AdminGate from '@/components/AdminGate';
 import { Palette, Volume2 } from 'lucide-react';
 
 export default function CustomizePage() {
   const [activeTab, setActiveTab] = useState<'character' | 'audio'>('character');
 
   return (
+    <AdminGate>
     <div className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
       {/* Category Tabs */}
       <div className="mb-6 flex justify-center">
@@ -41,5 +43,6 @@ export default function CustomizePage() {
 
       {activeTab === 'character' ? <CharacterUploader /> : <AudioUploader />}
     </div>
+    </AdminGate>
   );
 }
